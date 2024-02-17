@@ -1,4 +1,5 @@
 import { Player } from './Player.js';
+import { Controls } from './Controls.js';
 
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
@@ -31,7 +32,11 @@ function animate() {
 //   console.log(frames)
 // }, 1000)
 
-setTimeout(() => animate(), 2000);
+window.onload = function() {
+    animate();
+    canvas.addEventListener("keydown", Controls.keyDownListener);
+    canvas.addEventListener("keyup", Controls.keyUpListener);
+}
 
 function GameLogic() {
     player.GameLogic(ctx);
